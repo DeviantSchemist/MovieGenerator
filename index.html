@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form>
+    <p>
+      <label for="title">Movie Title</label>
+      <input type="text" name="title" id="title">
+    </p>
+    <p>
+      <label for="director">Director</label>
+      <input type="text" name="director" id="director">
+    </p>
+    <p>
+      <label for="image">Image URL</label>
+      <input type="url" name="image" id="image">
+    </p>
+    <p>
+      <label for="plot">Plot</label>
+      <input type="text" name="plot" id="plot">
+    </p>
+    <p>
+      <button id="done">Add Movie</button>
+    </p>
+  </form>
+  <div id="movieData"></div>
+  <script>
+    document.getElementById('done').addEventListener('click', event => {
+      event.preventDefault()
+      let movieElem = document.createElement('div')
+      movieElem.innerHTML = `
+        <h1>Title: ${document.getElementById('title').value}</h1>
+        <h2>Director: ${document.getElementById('director').value}</h2>
+        <img src="${document.getElementById('image').value}" />
+        <p> Synopsis: \n ${document.getElementById('plot').value}</p>
+      `
+      document.getElementById('movieData').append(movieElem)
+
+      document.getElementById('title').value = ''
+      document.getElementById('director').value = ''
+      document.getElementById('image').value = ''
+      document.getElementById('plot').value = ''
+    })
+  </script>
+</body>
+</html>
